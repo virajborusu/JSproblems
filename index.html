@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript</title>
+    <script>
+        function sumNumbers() {
+            var n = parseInt(prompt("How many elements you want to enter: "));
+            var k = 0;
+            for(var i = 0; i < n; i++) {
+                k += parseInt(prompt("Enter the number: "));
+            }
+            alert("Sum of elements is: " + k);
+        }
+
+        function reverseString() {
+            var n = prompt("Enter string:");
+            var k = n.split("").reverse().join("");
+            alert("Reversed string: " + k);
+        }
+
+        function findPrimes() {
+            var n = parseInt(prompt("Enter number of prime numbers:")), count = 0, num = 2;
+            var result = [];
+            while (count < n) {
+                var isPrime = true;
+                for (var i = 2; i * i <= num && isPrime; i++) 
+                    if (num % i == 0) isPrime = false;
+                if (isPrime) {
+                    result.push(num);
+                    count++;
+                }
+                num++;
+            }
+            alert("Prime numbers: " + result.join(", "));
+        }
+
+        function changeColor() {
+            const colors = ['white', 'red', 'blue', 'green', 'yellow', 'orange'];
+            document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        function checkAgeGroup() {
+            var age = parseInt(prompt("Enter your age:"));
+            var group = age < 13 ? "child" : age <= 19 ? "teenage" : age < 25 ? "young" : age < 65 ? "middle age" : "senior citizen";
+            alert("Your age group is: " + group);
+        }
+
+        function add(){
+            var a = parseInt(document.getElementById("aval").value);
+            var b = parseInt(document.getElementById("bval").value);
+            document.getElementById("result").innerHTML = "Sum is: " + (a + b);
+        }
+        
+        function sub(){
+            var a = parseInt(document.getElementById("aval").value);
+            var b = parseInt(document.getElementById("bval").value);
+            document.getElementById("result").innerHTML = "Difference is: " + (a - b);
+        }
+        
+        function mult(){
+            var a = parseInt(document.getElementById("aval").value);
+            var b = parseInt(document.getElementById("bval").value);
+            document.getElementById("result").innerHTML = "Product is: " + (a * b);
+        }
+        
+        function div(){
+            var a = parseInt(document.getElementById("aval").value);
+            var b = parseInt(document.getElementById("bval").value);
+            document.getElementById("result").innerHTML = "Division is: " + (a / b);
+        }
+
+        function calculateGrade() {
+            let name = document.getElementById("name").value;
+            let marks = [
+                parseFloat(document.getElementById("sub1").value),
+                parseFloat(document.getElementById("sub2").value),
+                parseFloat(document.getElementById("sub3").value),
+                parseFloat(document.getElementById("sub4").value),
+                parseFloat(document.getElementById("sub5").value)
+            ];
+            let total = marks.reduce((a, b) => a + b, 0);
+            let percentage = total / 5;
+            let grade = percentage >= 90 ? 'A' : percentage >= 80 ? 'B' : percentage >= 70 ? 'C' : percentage >= 60 ? 'D' : 'F';
+            document.getElementById("output").innerText = Student: ${name}\nTotal: ${total}\nPercentage: ${percentage}%\nGrade: ${grade};
+        }
+    </script>
+</head>
+<body>
+    <h1>JavaScript Basics</h1>
+
+    <h2>Basic Functions</h2>
+    <button onclick="sumNumbers()">Sum of N Numbers</button>
+    <button onclick="reverseString()">Reverse a String</button>
+    <button onclick="findPrimes()">Find N Prime Numbers</button>
+    <button onclick="changeColor()">Change Background Color</button>
+    <button onclick="checkAgeGroup()">Check Age Group</button>
+
+    <h2>Calculator</h2>
+    Enter a value<input type="text" id="aval" onkeyup="add()" /><br>
+    Enter b value<input type="text" id="bval" onkeyup="add()" /><br>
+    <input type="button" value="Add" onclick="add()" />
+    <input type="button" value="Sub" onclick="sub()" />
+    <input type="button" value="Mult" onclick="mult()" />
+    <input type="button" value="Div" onclick="div()" />
+    <p id="result">Nothing here...</p>
+
+    <h2>Student Grade Calculator</h2>
+    Name: <input type="text" id="name"><br><br>
+    Marks:<br><br>
+    <input type="number" id="sub1" placeholder="Subject 1">
+    <input type="number" id="sub2" placeholder="Subject 2">
+    <input type="number" id="sub3" placeholder="Subject 3">
+    <input type="number" id="sub4" placeholder="Subject 4"><br><br>
+    <input type="number" id="sub5" placeholder="Subject 5"><br><br>
+    <button onclick="calculateGrade()">Calculate Grade</button>
+    <p id="output"></p>
+</body>
+</html>
